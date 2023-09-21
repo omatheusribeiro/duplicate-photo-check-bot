@@ -10,11 +10,7 @@ The project follows a clean architecture to ensure a clear separation of respons
 
 - **duplicate-photo-check.Application**: In this layer, application logic and services responsible for coordinating application actions reside. Here, the duplicate photo checking is implemented.
 
-- **duplicate-photo-check.Domain**: The domain layer is where business logic and domain entities are defined. It encapsulates the business rules of the application.
-
 - **duplicate-photo-check.Front**: This is the front-end part of the application built in Angular 16. It provides a user-friendly interface for users to interact with the API and view the results of duplicate photo checking.
-
-- **duplicate-photo-check.Infra**: The infrastructure layer deals with technical details such as database access (if needed) and application configuration. It maintains the separation between the application and infrastructure layers.
 
 ## How to Use
 
