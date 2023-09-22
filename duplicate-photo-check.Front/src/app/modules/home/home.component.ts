@@ -7,5 +7,5 @@ import { Component } from "@angular/core";
   })
 
 export class HomeComponent {
-
+  public showSpinner:boolean = false;
 }
