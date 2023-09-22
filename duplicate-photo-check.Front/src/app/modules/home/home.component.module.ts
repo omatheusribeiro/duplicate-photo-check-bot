@@ -3,6 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { HomeComponent } from './home.component';
 import { ButtonModule } from 'src/app/core/components/button/button.component.module';
+import { InputModule } from 'src/app/core/components/input/input.component.module';
 
 @NgModule({
   declarations: [
@@ -10,7 +11,8 @@ import { ButtonModule } from 'src/app/core/components/button/button.component.mo
   ],
   imports: [
     BrowserModule,
-    ButtonModule
+    ButtonModule,
+    InputModule
   ],
   providers: [],
   bootstrap: [HomeComponent]
