@@ -6,14 +6,16 @@
         </div>
         <div class="d-flex justify-content-center mt-5">
             <form class="width-45">
-                <div class="d-flex flex-column justify-content-center">
-                    <label style="color: #02044A;">Enter the path of the duplicate photos</label>
-                    <input class="input-duplicate" type="text" placeholder="Navigate to the source folder of the duplicate photos"/>
-                </div>
-                <div class="d-flex flex-column justify-content-center mt-3">
-                    <label style="color: #02044A;">Enter the path of the photos that will be moved</label>
-                    <input class="input-duplicate" type="text" placeholder="Enter the path of the folder where you want to separate the duplicate photos"/>
-                </div>
+                <app-button-component 
+                    type="text" 
+                    label="Enter the path of the duplicate photos" 
+                    placeholder="Navigate to the source folder of the duplicate photos">
+                </app-button-component>
+                <app-button-component 
+                    type="text" 
+                    label="Enter the path of the photos that will be moved" 
+                    placeholder="Enter the path of the folder where you want to separate the duplicate photos">
+                </app-button-component>
                 <div class="d-flex flex-column w-100 mt-4">
                     <button class="button-duplicate">Submit</button>
                 </div>
