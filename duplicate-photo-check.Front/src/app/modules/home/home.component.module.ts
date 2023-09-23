@@ -1,5 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { HttpClientModule } from '@angular/common/http';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { HomeComponent } from './home.component';
 import { ButtonModule } from 'src/app/core/components/button/button.component.module';
@@ -12,6 +14,9 @@ import { SpinnerModule } from 'src/app/core/components/spinner/spinner.component
   ],
   imports: [
     BrowserModule,
+    ReactiveFormsModule,
+    FormsModule,
+    HttpClientModule,
     ButtonModule,
     InputModule,
     SpinnerModule
