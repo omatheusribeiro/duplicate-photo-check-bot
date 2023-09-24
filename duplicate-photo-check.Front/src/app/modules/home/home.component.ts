@@ -21,6 +21,7 @@ export class HomeComponent{
   constructor(public homeService: HomeService){}
 
   separatePhotos(){
+    debugger
     if(this.form.valid){
       this.homeService.getProcess(this.form.value.sourceFolderPath, this.form.value.destinationFolderPath).subscribe((res :any) => {
         console.log(res);
@@ -29,10 +30,5 @@ export class HomeComponent{
     else{
 
     }
-  }
-
-  changeteste(event:any){
-    debugger
-    console.log(event)
   }
 }
