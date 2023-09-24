@@ -10,12 +10,14 @@
                 <app-input-component
                     type="text" 
                     label="Enter the path of the duplicate photos" 
-                    placeholder="Navigate to the source folder of the duplicate photos">
+                    placeholder="Navigate to the source folder of the duplicate photos"
+                    [control]="form.controls.sourceFolderPath">
                 </app-input-component>
                 <app-input-component 
                     type="text" 
                     label="Enter the path of the photos that will be moved" 
-                    placeholder="Enter the path of the folder where you want to separate the duplicate photos">
+                    placeholder="Enter the path of the folder where you want to separate the duplicate photos"
+                    [control]="form.controls.destinationFolderPath">
                 </app-input-component>
                 <div class="d-flex flex-column w-100 mt-4">
                     <app-button-component
