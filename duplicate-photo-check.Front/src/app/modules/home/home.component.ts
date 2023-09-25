@@ -1,4 +1,4 @@
-import { Component, EventEmitter } from "@angular/core";
+import { Component } from "@angular/core";
 import { FormGroup, FormControl, Validators } from '@angular/forms'
 import { HomeService } from "./services/home.service";
 
@@ -21,10 +21,14 @@ export class HomeComponent{
   constructor(public homeService: HomeService){}
 
   separatePhotos(){
-    debugger
     if(this.form.valid){
+      this.showSpinner = true;
       this.homeService.getProcess(this.form.value.sourceFolderPath, this.form.value.destinationFolderPath).subscribe((res :any) => {
-        console.log(res);
+        setTimeout(() => { this.showSpinner = false; },3000);
+      },
+      error =>{
+        this.showSpinner = false;
+        console.log(error);
       })
     }
     else{
