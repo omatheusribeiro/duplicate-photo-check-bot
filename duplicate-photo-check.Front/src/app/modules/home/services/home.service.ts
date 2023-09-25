@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Environment } from 'src/environments/environment';
 
 @Injectable({
@@ -13,10 +13,11 @@ export class HomeService {
   constructor(private http: HttpClient) {}
 
   getProcess(sourceFolderPath: any, destinationFolderPath: any) {
-    return this.
-                http.get(`${this.apiUrl}
-                            DuplicatePhotoCheck/GetProcess?
-                            sourceFolderPath=${sourceFolderPath}&
-                            destinationFolderPath=${destinationFolderPath}`);
+
+    let queryParams = new HttpParams();
+    queryParams = queryParams.append("sourceFolderPath",sourceFolderPath);
+    queryParams = queryParams.append("destinationFolderPath",destinationFolderPath);
+
+    return this.http.get(`${this.apiUrl}DuplicatePhotoCheck/GetProcess`, {params:queryParams}); 
   }
 }

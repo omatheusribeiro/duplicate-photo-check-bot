@@ -5,10 +5,14 @@
     outline: none;
     border: 1px solid #9271EC;
     transition: 0.5s;
-    padding: 10px;
+    padding: 5px;
 }
 
 .input-duplicate:focus{
     background: #F5F1FF;
     color: #02044A;
+}
+
+label{
+    color: #02044A;;
 }
