@@ -24,7 +24,11 @@ export class HomeComponent{
     if(this.form.valid){
       this.showSpinner = true;
       this.homeService.getProcess(this.form.value.sourceFolderPath, this.form.value.destinationFolderPath).subscribe((res :any) => {
-        setTimeout(() => { this.showSpinner = false; },3000);
+        setTimeout(() => { 
+          this.showSpinner = false; 
+          this.form.get('sourceFolderPath')?.setValue("");
+          this.form.get('destinationFolderPath')?.setValue("");
+        },3000);
       },
       error =>{
         this.showSpinner = false;
