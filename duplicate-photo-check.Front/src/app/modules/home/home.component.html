@@ -28,5 +28,11 @@
                 </div>
             </form>
         </div>
+        <div *ngIf="showAlert" class="d-flex justify-content-center mt-5">
+            <app-alert-component
+                class={{classAlert}}
+                text={{textAlert}}>
+            </app-alert-component>
+        </div>
     </div>
 </section>
