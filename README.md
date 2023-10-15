@@ -1,6 +1,6 @@
 # Duplicate Photo Check Bot
 
-Duplicate Photo Check is an application developed in .NET Core 7, designed to help users find and manage duplicate photos in their folders. It consists of an API that allows users to specify a directory and then checks for duplicate photos in that directory, moving duplicates to a separate folder. Additionally, the project includes a user-friendly user interface built in Angular 16.
+Duplicate Photo Check Bot is an application developed in .NET Core 7, designed to help users find and manage duplicate photos in their folders. It consists of an API that allows users to specify a directory and then checks for duplicate photos in that directory, moving duplicates to a separate folder. Additionally, the project includes a user-friendly user interface built in Angular 16.
 
 ![Imagem](https://github.com/omatheusribeiro/duplicate-photo-check/assets/48257781/61a695ad-a152-4cfe-9a90-3660ebd7f84f)
 
