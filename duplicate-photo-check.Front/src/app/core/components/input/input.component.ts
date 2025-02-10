@@ -24,17 +24,23 @@ export class InputComponent {
   @ViewChild('folderInput') folderInput!: ElementRef;
   folderPath: string | null = null;
 
-  // Abre o seletor de diretório ao clicar na div
+  // Open the directory selector when clicking on the div
   openFolderSelector() {
     this.folderInput.nativeElement.click();
   }
 
-  // Obtém o nome da pasta selecionada
+  // Gets the name of the selected folder
   onFolderSelected(event: Event) {
     const inputElement = event.target as HTMLInputElement;
+    
     if (inputElement.files && inputElement.files.length > 0) {
-      this.folderPath = inputElement.files[0].webkitRelativePath.split('/')[0];
-      console.log('Pasta Selecionada:', this.folderPath);
+      // Get the full path of the first file and remove the file name
+      const fullPath = inputElement.files[0].webkitRelativePath;
+      const folderPath = fullPath.substring(0, fullPath.lastIndexOf('/'));
+  
+      this.folderPath = folderPath;
+      console.log('Caminho completo da pasta:', this.folderPath);
     }
   }
+  
 }

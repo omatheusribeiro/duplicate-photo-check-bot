@@ -13,6 +13,7 @@
             </svg>
         </div>
 
-        <label>{{label}}</label>
+        <label *ngIf="folderPath == null">{{label}}</label>
+        <label *ngIf="folderPath != null">Congratulations 🤩, the path selected was:  📂 {{this.folderPath}}</label>
     </div>
 </div>
