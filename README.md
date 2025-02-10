@@ -1,45 +1,74 @@
-# Duplicate Photo Check Bot
+# 📸 Duplicate Photo Check Bot
 
-Duplicate Photo Check Bot is an application developed in .NET Core 7, designed to help users find and manage duplicate photos in their folders. It consists of an API that allows users to specify a directory and then checks for duplicate photos in that directory, moving duplicates to a separate folder. Additionally, the project includes a user-friendly user interface built in Angular 16.
+## 📌 Overview
+The **Duplicate Photo Check Bot** is a user-friendly application developed with **.NET Core 7** and **Angular 16** to detect and manage duplicate photos effortlessly. 🚀
 
+This application allows users to:
+
+✅ **Identify Duplicate Photos** 🖼️  
+✅ **Move Duplicates to a Separate Folder** 📂  
+✅ **Easily Manage and Delete Duplicates** ❌
+
+## 🏗️ Project Structure
+```
+duplicate-photo-check-bot
+├── duplicate-photo-check.Api        # Presentation layer (handles HTTP requests)
+├── duplicate-photo-check.Application # Business logic and duplicate detection algorithm
+└── duplicate-photo-check.Front       # Front-end built with Angular 16
+```
+
+## 🖼️ Screenshots
 ![Imagem](https://github.com/omatheusribeiro/duplicate-photo-check/assets/48257781/61a695ad-a152-4cfe-9a90-3660ebd7f84f)
 
-## Folder Structure
+## 🚀 Getting Started
 
-The project follows a clean architecture to ensure a clear separation of responsibilities. The folder structure is organized as follows:
+### 📋 Prerequisites
+Make sure you have the following installed:
+- [Node.js](https://nodejs.org/) (v16+ recommended)
+- [Angular CLI](https://angular.io/cli) (latest version)
+- [.NET Core 7 SDK](https://dotnet.microsoft.com/download/dotnet/7.0)
 
-- **duplicate-photo-check.Api**: This is the presentation layer that handles HTTP requests and interacts with clients. The API exposes the necessary endpoints to interact with the duplicate photo checking functionality.
+### 🔧 Installation
+```bash
+# Clone the repository
+git clone https://github.com/omatheusribeiro/duplicate-photo-check-bot.git
+cd duplicate-photo-check-bot
 
-- **duplicate-photo-check.Application**: In this layer, application logic and services responsible for coordinating application actions reside. Here, the duplicate photo checking is implemented.
+# Install front-end dependencies
+cd duplicate-photo-check.Front
+npm install
 
-- **duplicate-photo-check.Front**: This is the front-end part of the application built in Angular 16. It provides a user-friendly interface for users to interact with the API and view the results of duplicate photo checking.
+# Go back to the root directory
+cd ..
+```
 
-## How to Use
+### ▶️ Running the Project
 
-To use Duplicate Photo Check, follow these steps:
+#### 1️⃣ Start the API
+```bash
+cd duplicate-photo-check.Api
+dotnet run
+```
 
-1. Clone this repository to your local environment.
+#### 2️⃣ Start the Front-end
+```bash
+cd ../duplicate-photo-check.Front
+ng serve
+```
 
-2. Ensure you have .NET Core 7 and Angular 16 installed on your machine.
+Open your browser and go to: **http://localhost:4200/** 🌐
 
-3. Navigate to the `duplicate-photo-check.Api` folder and run the .NET Core application to start the API:
+## ⚙️ How It Works
+1. **Select the source folder** containing your photos.
+2. **Choose the destination folder** where duplicates will be moved.
+3. **Click to start** the duplicate detection process.
+4. **Review and manage** the detected duplicates with ease.
 
-   ```
-   dotnet run
-   ```
+## 🛠️ Technologies Used
+- **.NET Core 7 (API)**
+- **Angular 16 (Frontend)**
+- **TypeScript, HTML, CSS**
 
-4. Navigate to the `duplicate-photo-check.Front` folder and start the Angular front-end:
+## 📜 License
+This project is licensed under the BSD 3-Clause License.
 
-   ```
-   ng serve
-   ```
-
-5. Access the user interface in your browser and use the API to check and manage duplicate photos.
-
-## Contribution
-
-If you wish to contribute to the Duplicate Photo Check project, feel free to open issues or submit pull requests. Your help is greatly appreciated!
-
-## License
-
-This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for more information.
