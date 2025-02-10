@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { InputComponent } from './input.component';
+import { CommonModule } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -9,7 +10,8 @@ import { InputComponent } from './input.component';
   ],
   imports: [
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
+    CommonModule
   ],
   exports:[InputComponent],
   bootstrap: [InputComponent]

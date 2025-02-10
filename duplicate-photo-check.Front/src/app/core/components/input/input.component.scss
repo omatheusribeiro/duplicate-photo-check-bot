@@ -1,13 +1,4 @@
 
-.input-duplicate{
-    height: 40px;
-    border-radius: 5px;
-    outline: none;
-    border: 1px solid #9271EC;
-    transition: 0.5s;
-    padding: 5px;
-}
-
 .input-duplicate:focus{
     background: #F5F1FF;
     color: #02044A;
@@ -17,13 +8,36 @@ label{
     color: #02044A;
     text-align: center;
     margin: 20px;
+    font-size: 12px;
 }
 
-button-select-folder{
+.button-select-folder{
     align-items: center;
     padding: 20px;
+    transition: 0.5s;
+    border-radius: 10px;
+    transition: 0.5s;
 }
 
 input {
-    margin: 20px;
+    position: absolute;
+    z-index: 0;
+}
+
+.circle{
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 30px;
+    cursor: pointer;
+    transition: 0.5s;
+}
+
+svg{
+    z-index: 100;
+    transition: 0.5s;
 }
