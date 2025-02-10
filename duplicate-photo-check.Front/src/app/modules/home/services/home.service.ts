@@ -12,11 +12,10 @@ export class HomeService {
 
   constructor(private http: HttpClient) {}
 
-  getProcess(sourceFolderPath: any, destinationFolderPath: any) {
+  getProcess(sourceFolderPath: any) {
 
     let queryParams = new HttpParams();
     queryParams = queryParams.append("sourceFolderPath",sourceFolderPath);
-    queryParams = queryParams.append("destinationFolderPath",destinationFolderPath);
 
     return this.http.get(`${this.apiUrl}DuplicatePhotoCheck/GetProcess`, {params:queryParams}); 
   }
