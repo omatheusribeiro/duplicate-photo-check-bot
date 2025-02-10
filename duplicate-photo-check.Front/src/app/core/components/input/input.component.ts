@@ -31,20 +31,7 @@ export class InputComponent {
     this.folderInput.nativeElement.click();
   }
 
-  onFolderSelected(event: Event) {
-    this.showSpinner = true;
-    const inputElement = event.target as HTMLInputElement;
-    
-    if (inputElement.files && inputElement.files.length > 0) {
-      // Get the full path of the first file and remove the file name
-      const fullPath = inputElement.files[0].webkitRelativePath;
-      const folderPath = fullPath.substring(0, fullPath.lastIndexOf('/'));
-
-      if(this.showSpinner){
-        this.showSpinner = false;
-      }
-  
-      this.folderPath = folderPath;
-    }
+  onFolderSelected() {
+    this.folderPath = this.control.value == "" ? null : this.control.value
   }
 }
