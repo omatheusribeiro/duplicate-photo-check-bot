@@ -1,8 +1,14 @@
 <div class="d-flex flex-column justify-content-center mt-3">
-    <label>{{label}}</label>
-    <input 
+    
+    <div class="d-flex justify-content-center flex-column button-select-folder" style="border: 2px dashed #9271EC; border-radius: 10px;">
+        <label>{{label}}</label>
+        <input 
         class="input-duplicate" 
-        type={{type}} 
+        type="file"
         placeholder={{placeholder}}
-        [formControl]="control"/>
+        [formControl]="control"
+        #folderInput (change)="onFolderSelected($event)" 
+        webkitdirectory 
+        directory/>
+    </div>
 </div>
