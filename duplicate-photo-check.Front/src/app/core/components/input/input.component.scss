@@ -17,6 +17,7 @@ label{
     transition: 0.5s;
     border-radius: 10px;
     transition: 0.5s;
+    width: 100%;
 }
 
 input {
@@ -39,4 +40,8 @@ input {
 
 svg{
     transition: 0.5s;
+}
+
+.w-80{
+    width: 95%;
 }

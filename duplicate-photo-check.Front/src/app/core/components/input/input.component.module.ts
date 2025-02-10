@@ -3,6 +3,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { InputComponent } from './input.component';
 import { CommonModule } from '@angular/common';
+import { SpinnerModule } from '../spinner/spinner.component.module';
 
 @NgModule({
   declarations: [
@@ -11,7 +12,8 @@ import { CommonModule } from '@angular/common';
   imports: [
     ReactiveFormsModule,
     FormsModule,
-    CommonModule
+    CommonModule,
+    SpinnerModule,
   ],
   exports:[InputComponent],
   bootstrap: [InputComponent]
