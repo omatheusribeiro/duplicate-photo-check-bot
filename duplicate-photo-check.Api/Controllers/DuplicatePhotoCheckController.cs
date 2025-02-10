@@ -18,8 +18,10 @@ namespace duplicate_photo_check.Controllers
 
         [HttpGet("GetProcess")]
         [AllowAnonymous]
-        public async Task<IActionResult> Process(string sourceFolderPath, string destinationFolderPath)
+        public async Task<IActionResult> Process(string sourceFolderPath)
         {
+            string destinationFolderPath = "";
+
             ResponseViewModel response = new ResponseViewModel();
 
             response = await _duplicatePhotoCheck.Process(sourceFolderPath, destinationFolderPath);
