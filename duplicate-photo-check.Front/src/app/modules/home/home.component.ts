@@ -17,8 +17,7 @@ export class HomeComponent{
   public showAlert:boolean = false;
 
   public form = new FormGroup({
-    sourceFolderPath: new FormControl('', [Validators.required]),
-    destinationFolderPath: new FormControl('', [Validators.required])
+    sourceFolderPath: new FormControl('', [Validators.required])
   });
 
   constructor(public homeService: HomeService){}
@@ -27,11 +26,10 @@ export class HomeComponent{
     this.showAlert = false; 
     if(this.form.valid){
       this.showSpinner = true;
-      this.homeService.getProcess(this.form.value.sourceFolderPath, this.form.value.destinationFolderPath).subscribe((res :any) => {
+      this.homeService.getProcess(this.form.value.sourceFolderPath).subscribe((res :any) => {
         setTimeout(() => { 
           this.showSpinner = false; 
           this.form.get('sourceFolderPath')?.setValue("");
-          this.form.get('destinationFolderPath')?.setValue("");
         },2000);
 
         this.showAlert = true;
