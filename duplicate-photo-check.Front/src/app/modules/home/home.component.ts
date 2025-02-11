@@ -34,13 +34,13 @@ export class HomeComponent{
 
         this.showAlert = true;
         this.classAlert = "alert alert-success";
-        this.textAlert = res.message;
+        this.textAlert = res.message + "The duplicate photos have been moved to the following directory: 📂 " + res.response;
 
         setTimeout(() => { 
           this.showAlert = false; 
           this.classAlert = "";
           this.classAlert = "";
-        },5000);
+        },8000);
 
       },
       error =>{
