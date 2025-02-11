@@ -12,6 +12,11 @@ namespace duplicate_photo_check.Application.Services
         {
             try
             {
+                if (!Directory.Exists(destinationFolderPath))
+                {
+                    Directory.CreateDirectory(destinationFolderPath);
+                }
+
                 var imageHashes = new Dictionary<string, List<string>>();
 
                 foreach (var imagePath in Directory.GetFiles(sourceFolderPath, "*.*", SearchOption.AllDirectories))
@@ -47,7 +52,7 @@ namespace duplicate_photo_check.Application.Services
             {
                 return new ResponseViewModel { Message = ex.Message, Error = "There was an error checking duplicate photos!", Success = false };
             }
-
         }
+
     }
 }

@@ -20,7 +20,7 @@ namespace duplicate_photo_check.Controllers
         [AllowAnonymous]
         public async Task<IActionResult> Process(string sourceFolderPath)
         {
-            string destinationFolderPath = "";
+            string destinationFolderPath = "C:/duplicate-photos";
 
             ResponseViewModel response = new ResponseViewModel();
 
