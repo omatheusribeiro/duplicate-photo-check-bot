@@ -9,9 +9,13 @@ import { HomeService } from 'src/app/modules/home/services/home.service';
 export class CarouselComponent implements OnInit {
     images: string[] = [];
 
-    constructor(public homeService: HomeService) {}
+    constructor(private homeService: HomeService) {}
 
     ngOnInit(): void {
+        this.loadImages();
+    }
+
+    loadImages() {
         this.homeService.getImages()
         .subscribe((res: any) => {
             this.images = res;

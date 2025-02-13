@@ -1,6 +1,7 @@
-import { Component } from "@angular/core";
+import { AfterViewInit, Component, ViewChild } from "@angular/core";
 import { FormGroup, FormControl, Validators } from '@angular/forms'
 import { HomeService } from "./services/home.service";
+import { CarouselComponent } from "src/app/core/components/carousel/carousel.component";
 
 @Component({
     selector: 'app-home',
@@ -8,7 +9,9 @@ import { HomeService } from "./services/home.service";
     styleUrls: ['./home.component.scss']
   })
 
-export class HomeComponent{
+export class HomeComponent implements AfterViewInit{
+
+  @ViewChild(CarouselComponent) carouselComponent!: CarouselComponent;
 
   public showSpinner:boolean = false;
   public inputSliderValue:any = "";
@@ -23,6 +26,12 @@ export class HomeComponent{
 
   constructor(public homeService: HomeService){}
 
+  ngAfterViewInit(): void {
+    if (this.carouselComponent) {
+      this.carouselComponent.loadImages();
+    }
+  }
+
   separatePhotos(){
     this.showAlert = false; 
     if(this.form.valid){
@@ -33,6 +42,8 @@ export class HomeComponent{
           this.form.get('sourceFolderPath')?.setValue("");
         },2000);
 
+        this.ngAfterViewInit();
+        
         this.showAlert = true;
         this.classAlert = "alert alert-success";
         this.textAlert = res.message + "The duplicate photos have been moved to the following directory: 📂 " + res.response;
