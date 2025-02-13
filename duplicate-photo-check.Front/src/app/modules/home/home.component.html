@@ -7,25 +7,19 @@
         </div>
         <div class="d-flex justify-content-center mt-5 w-100">
             <form class="d-flex justify-content-center flex-column" [formGroup]="form">
-                <app-input-component
-                    type="text" 
-                    label="Choose the folder you want to perform duplicate photo check" 
-                    placeholder="Enter the folder path here"
-                    [control]="form.controls.sourceFolderPath">
+                <app-input-component type="text" label="Choose the folder you want to perform duplicate photo check"
+                    placeholder="Enter the folder path here" [control]="form.controls.sourceFolderPath">
                 </app-input-component>
                 <div class="d-flex flex-column w-100 mt-4">
-                    <app-button-component
-                        type="submit"
-                        name="Submit"
-                        (onClick)="separatePhotos()">
+                    <app-button-component type="submit" name="Submit" (onClick)="separatePhotos()">
+                    </app-button-component>
+                    <app-button-component *ngIf="runBot" type="submit" name="Delete duplicate photos" (onClick)="separatePhotos()" style="margin-top: 10px;">
                     </app-button-component>
                 </div>
             </form>
         </div>
         <div *ngIf="showAlert" class="d-flex justify-content-center mt-5">
-            <app-alert-component
-                class={{classAlert}}
-                text={{textAlert}}>
+            <app-alert-component class={{classAlert}} text={{textAlert}}>
             </app-alert-component>
         </div>
     </div>

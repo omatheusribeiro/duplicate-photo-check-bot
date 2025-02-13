@@ -15,6 +15,7 @@ export class HomeComponent{
   public classAlert:string = "";
   public textAlert:string = "";
   public showAlert:boolean = false;
+  public runBot:boolean = false;
 
   public form = new FormGroup({
     sourceFolderPath: new FormControl('', [Validators.required])
@@ -35,6 +36,7 @@ export class HomeComponent{
         this.showAlert = true;
         this.classAlert = "alert alert-success";
         this.textAlert = res.message + "The duplicate photos have been moved to the following directory: 📂 " + res.response;
+        this.runBot = true;
 
         setTimeout(() => { 
           this.showAlert = false; 
