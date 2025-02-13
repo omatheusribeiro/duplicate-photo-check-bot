@@ -4,6 +4,8 @@
     justify-content: center;
     margin-top: 30px;
     width: 100%;
+    max-height: 250px;
+    overflow: auto;
 }
 
 img {
@@ -15,4 +17,38 @@ img {
 
 .carousel>img:nth-child(n+4) {
     justify-self: flex-start;
+}
+
+::-webkit-scrollbar {
+    width: 12px;
+    height: 12px;
+}
+
+::-webkit-scrollbar-track {
+    background-color: #f1f1f1;
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: #5F30E2;
+    border-radius: 10px;
+    border: 3px solid #f1f1f1;
+    transition: 0.5s;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background-color: #5F30E2;
+    transition: 0.5s;
+}
+
+::-webkit-scrollbar-horizontal {
+    height: 10px;
+}
+
+::-webkit-scrollbar-track-horizontal {
+    background-color: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb-horizontal {
+    background-color: #888;
 }
