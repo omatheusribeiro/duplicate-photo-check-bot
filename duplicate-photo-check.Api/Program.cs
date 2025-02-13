@@ -19,8 +19,8 @@ builder.Services.AddScoped<IDuplicatePhotoCheckService, DuplicatePhotoCheckServi
 
 var app = builder.Build();
 
-// Check if the "duplicated-photos" folder exists, and if not, create it.
-var duplicatedPhotosPath = @"C:\duplicated-photos"; // Absolute path to the folder
+// Check if the "duplicate-photos" folder exists, and if not, create it.
+var duplicatedPhotosPath = @"C:\duplicate-photos"; // Absolute path to the folder
 if (!Directory.Exists(duplicatedPhotosPath))
 {
     Directory.CreateDirectory(duplicatedPhotosPath); // Create the folder if it doesn't exist
