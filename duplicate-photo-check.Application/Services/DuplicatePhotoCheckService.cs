@@ -47,7 +47,7 @@ namespace duplicate_photo_check.Application.Services
 
                             if (File.Exists(duplicateImagePath))
                             {
-                                string hash = GenerateFileHash(duplicateImagePath);
+                                string hash = CalculateImageHash.GenerateFileHash(duplicateImagePath);
 
                                 string fileNameWithoutExt = Path.GetFileNameWithoutExtension(duplicateImagePath);
                                 string extension = Path.GetExtension(duplicateImagePath);
@@ -103,15 +103,5 @@ namespace duplicate_photo_check.Application.Services
                 return new ResponseViewModel { Message = ex.Message, Error = "There was an error deleting the directory!", Success = false };
             }
         }
-        static string GenerateFileHash(string filePath)
-        {
-            using (var md5 = MD5.Create())
-            using (var stream = File.OpenRead(filePath))
-            {
-                byte[] hashBytes = md5.ComputeHash(stream);
-                return BitConverter.ToString(hashBytes).Replace("-", "").ToLower(); // Converter hash para string
-            }
-        }
-
     }
 }
