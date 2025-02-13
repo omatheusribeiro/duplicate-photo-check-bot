@@ -1,6 +1,7 @@
 ﻿using duplicate_photo_check.Application.Helpers;
 using duplicate_photo_check.Application.Interfaces;
 using duplicate_photo_check.Application.ViewModels;
+using System.Security.Cryptography;
 
 namespace duplicate_photo_check.Application.Services
 {
@@ -19,34 +20,56 @@ namespace duplicate_photo_check.Application.Services
 
                 var imageHashes = new Dictionary<string, List<string>>();
 
+                // Group files by hash
                 foreach (var imagePath in Directory.GetFiles(sourceFolderPath, "*.*", SearchOption.AllDirectories))
                 {
                     var imageHash = CalculateImageHash.CalculateImage(imagePath);
 
-                    if (imageHashes.ContainsKey(imageHash))
+                    if (!imageHashes.ContainsKey(imageHash))
                     {
-                        foreach (var duplicateImagePath in imageHashes[imageHash])
+                        imageHashes[imageHash] = new List<string>();
+                    }
+                    imageHashes[imageHash].Add(imagePath);
+                }
+
+                // Process and move duplicates, keeping only one
+                foreach (var hashGroup in imageHashes)
+                {
+                    var duplicateFiles = hashGroup.Value;
+
+                    // If there is more than one duplicate file, move all except one
+                    if (duplicateFiles.Count > 1)
+                    {
+                        for (int i = 1; i < duplicateFiles.Count; i++) // Starts at 1 to keep the first one
                         {
+                            var duplicateImagePath = duplicateFiles[i];
                             var destinationPath = Path.Combine(destinationFolderPath, Path.GetFileName(duplicateImagePath));
+
                             if (File.Exists(duplicateImagePath))
                             {
+                                string hash = GenerateFileHash(duplicateImagePath);
+
+                                string fileNameWithoutExt = Path.GetFileNameWithoutExtension(duplicateImagePath);
+                                string extension = Path.GetExtension(duplicateImagePath);
+
+                                string newFileName = $"{fileNameWithoutExt}_{hash}{extension}";
+                                destinationPath = Path.Combine(destinationFolderPath, newFileName);
+
+                                int counter = 1;
+                                while (File.Exists(destinationPath))
+                                {
+                                    string numberedFileName = $"{fileNameWithoutExt}_{hash}_{counter}{extension}";
+                                    destinationPath = Path.Combine(destinationFolderPath, numberedFileName);
+                                    counter++;
+                                }
+
                                 File.Move(duplicateImagePath, destinationPath);
-                                Console.WriteLine($"Duplicate moved to: {destinationPath}");
                             }
                         }
-                    }
-                    else
-                    {
-                        if (!imageHashes.ContainsKey(imageHash))
-                        {
-                            imageHashes[imageHash] = new List<string>();
-                        }
-                        imageHashes[imageHash].Add(imagePath);
                     }
                 }
 
                 return new ResponseViewModel { Message = "Request made successfully", Response = destinationFolderPath, Success = true };
-
             }
             catch (Exception ex)
             {
@@ -80,5 +103,15 @@ namespace duplicate_photo_check.Application.Services
                 return new ResponseViewModel { Message = ex.Message, Error = "There was an error deleting the directory!", Success = false };
             }
         }
+        static string GenerateFileHash(string filePath)
+        {
+            using (var md5 = MD5.Create())
+            using (var stream = File.OpenRead(filePath))
+            {
+                byte[] hashBytes = md5.ComputeHash(stream);
+                return BitConverter.ToString(hashBytes).Replace("-", "").ToLower(); // Converter hash para string
+            }
+        }
+
     }
 }
