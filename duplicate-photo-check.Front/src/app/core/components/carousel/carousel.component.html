@@ -1,0 +1,7 @@
+<div class="carousel" *ngIf="images.length">
+    <div class="carousel-container">
+        <div *ngFor="let img of images" class="carousel-item">
+            <img [src]="img" alt="Image">
+        </div>
+    </div>
+</div>
