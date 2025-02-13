@@ -46,8 +46,15 @@ export class HomeComponent implements AfterViewInit{
         
         this.showAlert = true;
         this.classAlert = "alert alert-success";
-        this.textAlert = res.message + "The duplicate photos have been moved to the following directory: 📂 " + res.response;
-        this.runBot = true;
+
+        if(res.response != null){
+          this.textAlert = res.message + "The duplicate photos have been moved to the following directory: 📂 " + res.response;
+
+          this.runBot = true;
+        }
+        else{
+          this.textAlert = "No duplicate photos were identified in this directory";
+        }
 
         setTimeout(() => { 
           this.showAlert = false; 
