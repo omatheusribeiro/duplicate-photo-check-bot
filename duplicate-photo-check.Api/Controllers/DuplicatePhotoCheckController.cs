@@ -33,6 +33,25 @@ namespace duplicate_photo_check.Controllers
 
         }
 
+        [HttpGet("GetImages")]
+        [AllowAnonymous]
+        public IActionResult GetImages()
+        {
+            string _folderPath = @"C:\duplicate-photos";
+
+            if (!Directory.Exists(_folderPath))
+            {
+                return StatusCode(500, new { error = "Error reading folder" });
+            }
+
+            var imageFiles = Directory.GetFiles(_folderPath)
+                .Where(file => file.EndsWith(".jpg") || file.EndsWith(".jpeg") || file.EndsWith(".png") || file.EndsWith(".gif"))
+                .Select(file => $"{Request.Scheme}://{Request.Host}/images/{Path.GetFileName(file)}")
+                .ToList();
+
+            return Ok(imageFiles);
+        }
+
         [HttpDelete("Delete")]
         [AllowAnonymous]
         public async Task<IActionResult> Delete()
