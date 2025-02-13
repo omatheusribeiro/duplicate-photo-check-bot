@@ -49,8 +49,6 @@ export class HomeComponent implements AfterViewInit{
 
         if(res.response != null){
           this.textAlert = res.message + "The duplicate photos have been moved to the following directory: 📂 " + res.response;
-
-          this.runBot = true;
         }
         else{
           this.textAlert = "No duplicate photos were identified in this directory";
@@ -60,7 +58,8 @@ export class HomeComponent implements AfterViewInit{
           this.showAlert = false; 
           this.classAlert = "";
           this.classAlert = "";
-        },8000);
+          this.runBot = true;
+        },5000);
 
       },
       error =>{

@@ -1,4 +1,4 @@
-<section class="container height-100">
+<section class="container">
     <app-spinner-component [show]="showSpinner"></app-spinner-component>
     <div class="d-flex justify-content-center flex-column height-100">
         <div class="d-flex justify-content-center flex-column text-center">
@@ -23,6 +23,10 @@
         <div *ngIf="showAlert" class="d-flex justify-content-center mt-5">
             <app-alert-component class={{classAlert}} text={{textAlert}}>
             </app-alert-component>
+        </div>
+        <div *ngIf="runBot" class="d-flex justify-content-center flex-column" style="margin-top: 40px; text-align: center;">
+            <label>The photos below are located in the directory: 📂 C:\duplicate-photos</label>
+            <label style="margin-top: 10px;">If you choose to click the "Delete Photos" button, the system will delete the directory along with all photos that were identified as duplicates.</label>
         </div>
         <app-carousel *ngIf="runBot"></app-carousel>
     </div>
