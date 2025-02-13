@@ -2,9 +2,9 @@ using duplicate_photo_check.Application.Interfaces;
 using duplicate_photo_check.Application.Services;
 using Microsoft.Extensions.FileProviders;
 using Microsoft.OpenApi.Models;
+using System.IO;
 
 var builder = WebApplication.CreateBuilder(args);
-
 
 builder.Services.AddCors();
 builder.Services.AddControllers();
@@ -19,6 +19,13 @@ builder.Services.AddScoped<IDuplicatePhotoCheckService, DuplicatePhotoCheckServi
 
 var app = builder.Build();
 
+// Check if the "duplicated-photos" folder exists, and if not, create it.
+var duplicatedPhotosPath = @"C:\duplicated-photos"; // Absolute path to the folder
+if (!Directory.Exists(duplicatedPhotosPath))
+{
+    Directory.CreateDirectory(duplicatedPhotosPath); // Create the folder if it doesn't exist
+}
+
 if (app.Environment.IsDevelopment())
 {
     app.UseDeveloperExceptionPage();
@@ -28,14 +35,14 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
-// Serve arquivos estáticos de um diretório específico
+// Serve static files from a specific directory
 app.UseStaticFiles(new StaticFileOptions
 {
-    FileProvider = new PhysicalFileProvider(@"C:\duplicate-photos"),
+    FileProvider = new PhysicalFileProvider(duplicatedPhotosPath), // Using the variable for the path
     RequestPath = "/images"
 });
 
-// O restante da configuração
+// The rest of the configuration
 app.UseRouting();
 
 app.UseCors(x => x

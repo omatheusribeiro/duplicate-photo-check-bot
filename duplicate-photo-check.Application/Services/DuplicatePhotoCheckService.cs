@@ -13,6 +13,8 @@ namespace duplicate_photo_check.Application.Services
         {
             try
             {
+                bool runBot = false;
+
                 if (!Directory.Exists(destinationFolderPath))
                 {
                     Directory.CreateDirectory(destinationFolderPath);
@@ -64,12 +66,14 @@ namespace duplicate_photo_check.Application.Services
                                 }
 
                                 File.Move(duplicateImagePath, destinationPath);
+
+                                runBot = true;
                             }
                         }
                     }
                 }
 
-                return new ResponseViewModel { Message = "Request made successfully", Response = destinationFolderPath, Success = true };
+                return new ResponseViewModel { Message = "Request made successfully", Response = runBot ? destinationFolderPath : null, Success = true };
             }
             catch (Exception ex)
             {
