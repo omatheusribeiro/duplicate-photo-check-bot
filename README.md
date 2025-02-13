@@ -18,7 +18,9 @@ duplicate-photo-check-bot
 ```
 
 ## 🖼️ Screenshots
-![Imagem](https://github.com/omatheusribeiro/duplicate-photo-check/assets/48257781/61a695ad-a152-4cfe-9a90-3660ebd7f84f)
+![image](https://github.com/user-attachments/assets/3f2c50b7-2981-4250-992f-28e8f1cfe416)
+![image](https://github.com/user-attachments/assets/9cb662c1-9655-48a1-830e-d16beaa39646)
+
 
 ## 🚀 Getting Started
 
