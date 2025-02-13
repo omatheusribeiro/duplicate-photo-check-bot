@@ -54,5 +54,26 @@ namespace duplicate_photo_check.Application.Services
             }
         }
 
+        public async Task<ResponseViewModel> Delete()
+        {
+            try
+            {
+                string destinationFolderPath = "C:/duplicate-photos";
+
+                if (!Directory.Exists(destinationFolderPath))
+                {
+                    return new ResponseViewModel { Message = "The current directory no longer exists on your PC.", Response = destinationFolderPath, Success = false };
+                }
+
+                Directory.Delete(destinationFolderPath);
+
+                return new ResponseViewModel { Message = "Successfully deleted photos and directory.", Response = destinationFolderPath, Success = true };
+
+            }
+            catch (Exception ex)
+            {
+                return new ResponseViewModel { Message = ex.Message, Error = "There was an error deleting the directory!", Success = false };
+            }
+        }
     }
 }

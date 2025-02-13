@@ -32,5 +32,20 @@ namespace duplicate_photo_check.Controllers
             return Ok(response);
 
         }
+
+        [HttpDelete("Delete")]
+        [AllowAnonymous]
+        public async Task<IActionResult> Delete()
+        {
+            ResponseViewModel response = new ResponseViewModel();
+
+            response = await _duplicatePhotoCheck.Delete();
+
+            if (!response.Success)
+                return BadRequest(response);
+
+            return Ok(response);
+
+        }
     }
 }
