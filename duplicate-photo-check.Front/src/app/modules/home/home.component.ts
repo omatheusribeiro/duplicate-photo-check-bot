@@ -71,4 +71,40 @@ export class HomeComponent{
       },5000);
     }
   }
+
+  deletePhotos(){
+    this.homeService.delete().subscribe(() => {
+      setTimeout(() => { 
+        this.showSpinner = false; 
+        this.form.get('sourceFolderPath')?.setValue("");
+      },2000);
+
+      this.showAlert = true;
+      this.classAlert = "alert alert-success";
+      this.textAlert = "Successfully deleted photos and directory.";
+      this.runBot = false;
+
+      setTimeout(() => { 
+        this.showAlert = false; 
+        this.classAlert = "";
+        this.classAlert = "";
+        this.runBot = false;
+      },8000);
+
+    },
+    error =>{
+      this.showSpinner = false;
+
+      this.showAlert = true;
+      this.classAlert = "alert alert-danger";
+      this.textAlert = error.message;
+      this.runBot = false;
+
+      setTimeout(() => { 
+        this.showAlert = false; 
+        this.classAlert = "";
+        this.classAlert = "";
+      },5000);
+    })
+  }
 }

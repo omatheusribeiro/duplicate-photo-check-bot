@@ -19,4 +19,8 @@ export class HomeService {
 
     return this.http.get(`${this.apiUrl}DuplicatePhotoCheck/GetProcess`, {params:queryParams}); 
   }
+
+  delete() {
+    return this.http.delete(`${this.apiUrl}DuplicatePhotoCheck/Delete`); 
+  }
 }
