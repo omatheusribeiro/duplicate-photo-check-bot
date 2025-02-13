@@ -1,5 +1,6 @@
 using duplicate_photo_check.Application.Interfaces;
 using duplicate_photo_check.Application.Services;
+using Microsoft.Extensions.FileProviders;
 using Microsoft.OpenApi.Models;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -27,6 +28,14 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
+// Serve arquivos estáticos de um diretório específico
+app.UseStaticFiles(new StaticFileOptions
+{
+    FileProvider = new PhysicalFileProvider(@"C:\duplicate-photos"),
+    RequestPath = "/images"
+});
+
+// O restante da configuração
 app.UseRouting();
 
 app.UseCors(x => x

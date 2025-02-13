@@ -35,9 +35,9 @@ namespace duplicate_photo_check.Controllers
 
         [HttpGet("GetImages")]
         [AllowAnonymous]
-        public IActionResult GetImages()
+        public async Task<IActionResult> GetImages()
         {
-            string _folderPath = @"C:\duplicate-photos";
+            string _folderPath = @"C:\duplicate-photos"; // Caminho da pasta
 
             if (!Directory.Exists(_folderPath))
             {
@@ -49,7 +49,7 @@ namespace duplicate_photo_check.Controllers
                 .Select(file => $"{Request.Scheme}://{Request.Host}/images/{Path.GetFileName(file)}")
                 .ToList();
 
-            return Ok(imageFiles);
+            return Ok(imageFiles);  // Retorna todas as URLs das imagens
         }
 
         [HttpDelete("Delete")]

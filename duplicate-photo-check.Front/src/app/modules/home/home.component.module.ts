@@ -9,6 +9,7 @@ import { ButtonLightModule } from 'src/app/core/components/button-light/button-l
 import { InputModule } from 'src/app/core/components/input/input.component.module';
 import { SpinnerModule } from 'src/app/core/components/spinner/spinner.component.module';
 import { AlertModule } from 'src/app/core/components/alert/alert.component.module';
+import { CarouselModule } from 'src/app/core/components/carousel/carousel.component.module';
 
 @NgModule({
   declarations: [
@@ -24,6 +25,7 @@ import { AlertModule } from 'src/app/core/components/alert/alert.component.modul
     SpinnerModule,
     AlertModule,
     ButtonLightModule,
+    CarouselModule
   ],
   providers: [],
   bootstrap: [HomeComponent]
