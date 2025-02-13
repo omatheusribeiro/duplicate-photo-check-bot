@@ -11,10 +11,12 @@
                     placeholder="Enter the folder path here" [control]="form.controls.sourceFolderPath">
                 </app-input-component>
                 <div class="d-flex flex-column w-100 mt-4">
-                    <app-button-component type="submit" name="Submit" (onClick)="separatePhotos()">
-                    </app-button-component>
-                    <app-button-component *ngIf="runBot" type="submit" name="Delete duplicate photos" (onClick)="deletePhotos()" style="margin-top: 10px;">
-                    </app-button-component>
+                    <div class="d-flex justify-content-between">
+                        <app-button-component type="submit" name="Start checking for duplicate photos" (onClick)="separatePhotos()">
+                        </app-button-component>
+                        <app-button-light-component *ngIf="runBot" type="submit" name="Delete photos" (onClick)="deletePhotos()">
+                        </app-button-light-component>
+                    </div>
                 </div>
             </form>
         </div>
