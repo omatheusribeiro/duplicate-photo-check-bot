@@ -65,10 +65,15 @@ namespace duplicate_photo_check.Application.Services
                     return new ResponseViewModel { Message = "The current directory no longer exists on your PC.", Response = destinationFolderPath, Success = false };
                 }
 
-                Directory.Delete(destinationFolderPath);
-
-                return new ResponseViewModel { Message = "Successfully deleted photos and directory.", Response = destinationFolderPath, Success = true };
-
+                try
+                {
+                    Directory.Delete(destinationFolderPath, true);
+                    return new ResponseViewModel { Message = "Successfully deleted photos and directory.", Response = destinationFolderPath, Success = true };
+                }
+                catch (Exception ex)
+                {
+                    return new ResponseViewModel { Message = "Error deleting directory: {ex.Message}", Response = destinationFolderPath, Success = false };
+                }
             }
             catch (Exception ex)
             {
