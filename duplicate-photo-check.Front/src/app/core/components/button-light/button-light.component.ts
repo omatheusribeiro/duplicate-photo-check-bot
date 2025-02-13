@@ -9,5 +9,6 @@ import { Component, EventEmitter, Input, Output } from "@angular/core";
 export class ButtonLightComponent {
     @Input() name = "";
     @Input() type = "";
+    @Input() disabled: boolean = false;
     @Output() public onClick: EventEmitter<void> = new EventEmitter();
 }
